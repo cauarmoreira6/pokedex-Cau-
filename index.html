@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pokédex Premium</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="app-shell">
+    <header class="topbar glass">
+      <div class="brand">
+        <div class="brand-badge">P</div>
+        <div>
+          <p class="brand-label">Pokédex</p>
+          <span>Edition 2026</span>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button class="icon-button" id="refreshButton" title="Atualizar Pokémons">⟳</button>
+      </div>
+    </header>
+
+    <section class="hero glass">
+      <div class="hero-copy">
+        <p class="eyebrow">Descubra todos os Pokémons</p>
+        <h1>Uma Pokédex moderna e premium.</h1>
+        <p class="hero-text">Busque por nome ou número e explore as cartas com detalhes, animações e visual cinematográfico.</p>
+      </div>
+      <div class="search-panel">
+        <label class="search-label" for="searchInput">Buscar Pokémon</label>
+        <div class="search-field glass">
+          <input id="searchInput" type="search" placeholder="Ex: pikachu ou 25" autocomplete="off" />
+          <span class="search-icon">🔎</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="view-selector glass">
+      <div class="view-tabs">
+        <button class="view-tab active" data-view="pokedex">Pokédex</button>
+        <button class="view-tab" data-view="battle">Batalha</button>
+      </div>
+    </section>
+
+    <section class="generation-selector glass">
+      <div class="generation-intro">
+        <p>Selecione a geração abaixo para ver todos os Pokémons organizados por geração.</p>
+      </div>
+      <div class="generation-tabs">
+        <button class="gen-button active" data-gen="1">Geração 1</button>
+        <button class="gen-button" data-gen="2">Geração 2</button>
+        <button class="gen-button" data-gen="3">Geração 3</button>
+        <button class="gen-button" data-gen="4">Geração 4</button>
+        <button class="gen-button" data-gen="5">Geração 5</button>
+        <button class="gen-button" data-gen="6">Geração 6</button>
+        <button class="gen-button" data-gen="7">Geração 7</button>
+        <button class="gen-button" data-gen="8">Geração 8</button>
+        <button class="gen-button" data-gen="9">Geração 9</button>
+        <button class="gen-button" data-gen="all">Todas</button>
+      </div>
+    </section>
+
+    <section class="battle-view hidden" id="battleView">
+      <div class="battle-stage glass">
+        <div class="battle-header">
+          <h2>Batalha Pokémon</h2>
+          <p>Como deseja escolher seu Pokémon para esta batalha?</p>
+        </div>
+        <div class="battle-action-buttons">
+          <button class="secondary-button" id="choosePokemonBtn">Escolher Pokémon</button>
+          <button class="primary-button" id="randomPokemonBtn">Sortear Pokémon</button>
+        </div>
+        <div class="battle-selection hidden" id="battleSelection">
+          <p class="battle-selection-label">Selecione seu Pokémon</p>
+          <div class="grid" id="battlePokemonGrid"></div>
+        </div>
+        <div class="battle-arena hidden" id="battleArena">
+          <div class="battle-scenario">
+            <div class="battle-background" aria-hidden="true"></div>
+            <div class="battle-field">
+              <div class="battle-side player-side">
+                <p>VOCÊ</p>
+                <img id="playerPokemonImage" src="" alt="Jogador" />
+                <strong id="playerPokemonName">Your Pokémon</strong>
+              </div>
+              <div class="battle-center">
+                <button class="primary-button big" id="startBattleBtn">INICIAR BATALHA</button>
+                <div class="battle-message" id="battleMessage">Pronto para começar?</div>
+              </div>
+              <div class="battle-side enemy-side">
+                <p>ADVERSÁRIO</p>
+                <img id="enemyPokemonImage" src="" alt="Adversário" />
+                <strong id="enemyPokemonName">Máquina</strong>
+              </div>
+            </div>
+            
+          </div>
+        </div>
+        <div class="battle-result hidden" id="battleResult">
+          <div class="result-card">
+            <p>🏆 VENCEDOR 🏆</p>
+            <img id="winnerPokemonImage" src="" alt="Vencedor" />
+            <strong id="winnerPokemonName">Nome do vencedor</strong>
+          </div>
+          <div class="battle-result-buttons">
+            <button class="primary-button" id="rematchBtn">Jogar Novamente</button>
+            <button class="secondary-button" id="backMenuBtn">Voltar ao Menu Inicial</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <main class="content">
+      <div class="loader" id="loader">
+        <div class="spinner"></div>
+        <p>Carregando Pokémons...</p>
+      </div>
+      <div class="grid hidden" id="pokemonGrid"></div>
+    </main>
+  </div>
+
+  <div class="modal-backdrop hidden" id="detailModal">
+    <div class="modal glass">
+      <button class="modal-close" id="modalClose">✕</button>
+      <div class="modal-header">
+        <div>
+          <p class="modal-number" id="modalNumber">#001</p>
+          <h2 id="modalName">Bulbasaur</h2>
+          <div class="type-list" id="modalTypes"></div>
+        </div>
+        <div class="modal-image-wrapper">
+          <img id="modalImage" src="" alt=" Pokémon " />
+        </div>
+      </div>
+      <div class="modal-body">
+        <div class="modal-section">
+          <h3>Sobre</h3>
+          <p id="modalDescription">Descrição detalhada do Pokémon.</p>
+        </div>
+        <div class="modal-section stats-grid">
+          <div>
+            <p class="stat-name">Altura</p>
+            <strong id="modalHeight">0.7 m</strong>
+          </div>
+          <div>
+            <p class="stat-name">Peso</p>
+            <strong id="modalWeight">6.9 kg</strong>
+          </div>
+          <div>
+            <p class="stat-name">Habitat</p>
+            <strong id="modalHabitat">Grassland</strong>
+          </div>
+          <div>
+            <p class="stat-name">Habilidade</p>
+            <strong id="modalAbility">Overgrow</strong>
+          </div>
+        </div>
+        <div class="modal-section">
+          <h3>Atributos</h3>
+          <div class="progress-list" id="modalStats"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
