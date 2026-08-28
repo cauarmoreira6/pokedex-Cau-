@@ -1370,7 +1370,7 @@ const ThemeManager = {
     const button = document.getElementById("themeToggle");
     if (button) {
       const isLight = nextTheme === "light";
-      button.querySelector(".theme-toggle-icon").textContent = "Tema";
+      button.querySelector(".theme-toggle-icon use").setAttribute("href", isLight ? "#icon-moon" : "#icon-sun");
       button.querySelector(".theme-toggle-label").textContent = isLight ? "Escuro" : "Claro";
       button.setAttribute("aria-label", isLight ? "Ativar tema escuro" : "Ativar tema claro");
       button.title = isLight ? "Ativar tema escuro" : "Ativar tema claro";
@@ -1596,8 +1596,8 @@ const App = {
               <div class="metric"><span class="m-label">Dificuldade</span><span class="m-val ${this._diffClass(peixe.dificuldade)}">${peixe.dificuldade}</span></div>
             </div>
             <div class="fotd-actions">
-              <button class="btn-primary" onclick="App.openModal('${peixe.id}')">Ver Ficha Completa</button>
-              <button class="btn-secondary" onclick="App._navigate('explorar')">Ver Catálogo</button>
+              <button class="btn-primary" onclick="App.openModal('${peixe.id}')"><svg class="button-icon" aria-hidden="true"><use href="#icon-book"></use></svg>Ver Ficha Completa</button>
+              <button class="btn-secondary" onclick="App._navigate('explorar')"><svg class="button-icon" aria-hidden="true"><use href="#icon-compass"></use></svg>Ver Catálogo</button>
             </div>
           </div>
         </div>
@@ -1618,7 +1618,7 @@ const App = {
       grid.innerHTML = "";
       if (empty) {
         empty.classList.remove("hidden");
-        empty.innerHTML = `<div class="empty-content"><span class="empty-icon">Busca</span><h3>Nenhum peixe encontrado</h3><p>Tente outros filtros ou limpe a pesquisa.</p><button class="btn-primary" id="emptyResetBtn">Limpar Filtros</button></div>`;
+        empty.innerHTML = `<div class="empty-content"><span class="empty-icon"><svg class="button-icon" aria-hidden="true"><use href="#icon-search"></use></svg></span><h3>Nenhum peixe encontrado</h3><p>Tente outros filtros ou limpe a pesquisa.</p><button class="btn-primary" id="emptyResetBtn"><svg class="button-icon" aria-hidden="true"><use href="#icon-refresh"></use></svg>Limpar Filtros</button></div>`;
         document.getElementById("emptyResetBtn")?.addEventListener("click", () => this._resetFilters());
       }
       return;
@@ -1634,7 +1634,7 @@ const App = {
               onerror="this.src='https://via.placeholder.com/400x190/0b1a2f/00e5ff?text=${encodeURIComponent(p.nome)}'" loading="lazy" />
           </div>
           <button class="card-fav-btn ${FavoritosManager.isFav(p.id) ? "active" : ""}"
-            onclick="event.stopPropagation();App.toggleFav('${p.id}',this)" title="Favoritar">${FavoritosManager.isFav(p.id) ? "Favoritado" : "Favoritar"}</button>
+            onclick="event.stopPropagation();App.toggleFav('${p.id}',this)" title="Favoritar"><svg class="button-icon" aria-hidden="true"><use href="#icon-heart"></use></svg><span>${FavoritosManager.isFav(p.id) ? "Favoritado" : "Favoritar"}</span></button>
           <span class="card-difficulty-badge ${this._diffClass(p.dificuldade)}">${p.dificuldade}</span>
         </div>
         <div class="fish-card-body">
@@ -1652,8 +1652,8 @@ const App = {
           </div>
         </div>
         <div class="fish-card-footer">
-          <button class="btn-card-details" onclick="event.stopPropagation();App.openModal('${p.id}')">Ver detalhes <span class="arrow">→</span></button>
-          <button class="btn-card-compare" onclick="event.stopPropagation();App.addToCompare('${p.id}')" title="Comparar">Comparar</button>
+          <button class="btn-card-details" onclick="event.stopPropagation();App.openModal('${p.id}')"><svg class="button-icon" aria-hidden="true"><use href="#icon-book"></use></svg>Ver detalhes <span class="arrow">→</span></button>
+          <button class="btn-card-compare" onclick="event.stopPropagation();App.addToCompare('${p.id}')" title="Comparar peixe" aria-label="Comparar peixe"><span class="compare-symbol" aria-hidden="true">⚖️</span></button>
         </div>
       </div>`).join("");
   },
@@ -1674,7 +1674,7 @@ const App = {
             ${this._renderBadges(p)}
             <span class="badge badge-diff ${this._diffClass(p.dificuldade)}">${p.dificuldade}</span>
           </div>
-          <button class="modal-close" onclick="App.closeModal()">Fechar</button>
+          <button class="modal-close" onclick="App.closeModal()" aria-label="Fechar" title="Fechar"><svg class="button-icon" aria-hidden="true"><use href="#icon-x"></use></svg></button>
         </div>
         <div class="modal-hero-split">
           <div class="modal-image-column">
@@ -1684,9 +1684,9 @@ const App = {
             </div>
             <div class="modal-action-buttons">
               <button class="btn-fav-toggle ${isFav ? "is-favorited" : ""}" id="modalFavBtn" onclick="App.toggleFavModal('${p.id}')">
-                ${isFav ? "Favoritado" : "Favoritar"}
+                <svg class="button-icon" aria-hidden="true"><use href="#icon-heart"></use></svg><span>${isFav ? "Favoritado" : "Favoritar"}</span>
               </button>
-              <button class="btn-compare-action" onclick="App.addToCompare('${p.id}');App.closeModal()">Comparar</button>
+              <button class="btn-compare-action" onclick="App.addToCompare('${p.id}');App.closeModal()"><svg class="button-icon" aria-hidden="true"><use href="#icon-scale"></use></svg>Comparar</button>
             </div>
           </div>
           <div class="modal-info-column">
@@ -1759,7 +1759,7 @@ const App = {
   toggleFav(id, btn) {
     const added = FavoritosManager.toggle(id);
     if (btn) {
-      btn.textContent = added ? "Favoritado" : "Favoritar";
+      btn.querySelector("span:last-child").textContent = added ? "Favoritado" : "Favoritar";
       btn.classList.toggle("active", added);
     }
     this._updateFavBadge();
@@ -1772,7 +1772,7 @@ const App = {
     const added = FavoritosManager.toggle(id);
     const btn = document.getElementById("modalFavBtn");
     if (btn) {
-      btn.textContent = added ? "Favoritado" : "Favoritar";
+      btn.querySelector("span:last-child").textContent = added ? "Favoritado" : "Favoritar";
       btn.classList.toggle("is-favorited", added);
     }
     this._updateFavBadge();
@@ -1781,7 +1781,7 @@ const App = {
     cards.forEach(c => {
       const cardId = c.closest(".fish-card")?.querySelector(".btn-card-details")?.getAttribute("onclick")?.match(/'([^']+)'/)?.[1];
       if (cardId === id) {
-        c.textContent = added ? "Favoritado" : "Favoritar";
+        c.querySelector("span:last-child").textContent = added ? "Favoritado" : "Favoritar";
         c.classList.toggle("active", added);
       }
     });
@@ -1987,10 +1987,10 @@ const App = {
           ${this._pendingCaptureDelete === captura.id ? `
             <div class="capture-delete-confirm" role="group" aria-label="Confirmar exclusão">
               <span>Excluir este registro?</span>
-              <button class="capture-confirm-btn" type="button" onclick="App.confirmDeleteCapture('${this._escapeHtml(captura.id)}')">Confirmar</button>
-              <button class="capture-cancel-btn" type="button" onclick="App.cancelDeleteCapture()">Cancelar</button>
+              <button class="capture-confirm-btn" type="button" onclick="App.confirmDeleteCapture('${this._escapeHtml(captura.id)}')"><svg class="button-icon" aria-hidden="true"><use href="#icon-x"></use></svg>Confirmar</button>
+              <button class="capture-cancel-btn" type="button" onclick="App.cancelDeleteCapture()"><svg class="button-icon" aria-hidden="true"><use href="#icon-x"></use></svg>Cancelar</button>
             </div>` : `
-            <button class="capture-delete" type="button" onclick="App.requestDeleteCapture('${this._escapeHtml(captura.id)}')" aria-label="Excluir registro" title="Excluir registro">Excluir</button>`}
+            <button class="capture-delete" type="button" onclick="App.requestDeleteCapture('${this._escapeHtml(captura.id)}')" aria-label="Excluir registro" title="Excluir registro"><svg class="button-icon" aria-hidden="true"><use href="#icon-x"></use></svg></button>`}
           <div class="capture-record-top">
             <div>
               <h4>${this._escapeHtml(nomePeixe)}</h4>
@@ -2171,6 +2171,21 @@ const App = {
 
   _assistantSystemAnswer(normalized, peixe) {
     const nome = peixe ? ` para ${peixe.nome}` : "";
+    if (normalized.includes("chumbo") || normalized.includes("chumbada") || normalized.includes("chumbos")) {
+      return `Chumbo e chumbada${nome}: use apenas o peso necessário para manter a isca no ponto. Chumbo de correr reduz a resistência sentida pelo peixe; chumbada fixa mantém a montagem parada; modelos oliva e gota devem ser escolhidos conforme corrente, profundidade e tipo de fundo.`;
+    }
+    if (normalized.includes("superficie") || normalized.includes("topwater")) {
+      return `Pesca de superfície${nome}: procure peixe ativo, sombra, estruturas, margens com alimento e água oxigenada. Faça a apresentação com pouca perturbação e varie pausas e velocidade antes de trocar a isca.`;
+    }
+    if (normalized.includes("artificial") || normalized.includes("plug") || normalized.includes("jig") || normalized.includes("spinner") || normalized.includes("shad")) {
+      return `Iscas artificiais${nome}: plugs de superfície trabalham a lâmina; modelos de meia-água cobrem a coluna; crankbaits exploram profundidade; jigs e shads trabalham perto do fundo; spinners e colheres geram brilho e vibração. Varie tamanho, cor, velocidade e pausas.`;
+    }
+    if (normalized.includes("mar") || normalized.includes("praia") || normalized.includes("oceano")) {
+      return `Pesca de mar${nome}: observe maré, vento, corrente, transparência e estrutura. Na praia, procure valas e canais; em costões, bordas e espuma; em mangues e estuários, canais e mudanças de corrente. Use líder e equipamento compatíveis com água salgada.`;
+    }
+    if (normalized.includes("pesqueiro") || normalized.includes("pesque pague")) {
+      return `Pesqueiro${nome}: consulte o regulamento e teste superfície, meia-água e fundo. Massa, milho, frutas e ração atendem espécies onívoras; peixes de couro costumam responder a isca natural no fundo. A profundidade da ceva muda durante o dia.`;
+    }
     if (normalized.includes("boia cevadeira") || normalized.includes("cevadeira")) {
       return `Boia cevadeira${nome}: indicada para lançar ração e trabalhar a isca na superfície ou meia-água. Ajuste o chicote à profundidade e use apenas onde a ceva é permitida.`;
     }
@@ -2262,7 +2277,27 @@ const App = {
     const cleanQuestion = String(question || "").trim();
     if (!cleanQuestion) return;
     this._appendAssistantMessage(cleanQuestion, "user");
-    this._appendAssistantMessage(this._assistantAnswer(cleanQuestion), "bot");
+    const pendingMessage = this._appendAssistantMessage("Pensando...", "bot");
+
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          question: cleanQuestion,
+          fishContext: this._assistantFindFish(FiltrosManager._normalize(cleanQuestion))
+        })
+      });
+      if (!response.ok) throw new Error("Não foi possível consultar as fontes online.");
+      const data = await response.json();
+      if (!data.answer) throw new Error("Resposta vazia das fontes online.");
+      if (pendingMessage) pendingMessage.textContent = data.answer;
+    } catch (error) {
+      console.warn("Fontes online indisponíveis; usando resposta local de emergência.", error);
+      if (pendingMessage) {
+        pendingMessage.textContent = `${this._assistantAnswer(cleanQuestion)}\n\nAs fontes online estão indisponíveis no momento.`;
+      }
+    }
   },
 
   _toggleFishingAssistant(force) {
@@ -2325,6 +2360,7 @@ const App = {
     let suppressClick = false;
 
     scroller.addEventListener("pointerdown", event => {
+      if (event.target.closest("button")) return;
       dragState = { startX: event.clientX, scrollLeft: scroller.scrollLeft };
       dragged = false;
       scroller.setPointerCapture?.(event.pointerId);
@@ -2373,8 +2409,15 @@ const App = {
       this._askAssistant(input?.value);
       if (input) input.value = "";
     });
-    document.querySelectorAll("[data-assistant-question]").forEach(button => {
-      button.addEventListener("click", () => this._askAssistant(button.dataset.assistantQuestion));
+    document.querySelector(".assistant-suggestions")?.addEventListener("click", event => {
+      const button = event.target.closest("button[data-assistant-question]");
+      if (!button) return;
+      event.preventDefault();
+      const question = button.dataset.assistantQuestion;
+      const input = document.getElementById("assistantInput");
+      if (input) input.value = question;
+      this._askAssistant(question);
+      if (input) input.value = "";
     });
 
     // Botão do hero

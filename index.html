@@ -13,19 +13,38 @@
 </head>
 <body>
 
-  <button class="theme-toggle" id="themeToggle" type="button" aria-label="Ativar tema claro" title="Ativar tema claro">
-<<<<<<< HEAD
-    <span class="theme-toggle-icon" aria-hidden="true">Tema</span>
-=======
-    <span class="theme-toggle-icon" aria-hidden="true"></span>
->>>>>>> b6d7319da8c0d491673cc72ada8a3751ebfe0066
-    <span class="theme-toggle-label">Claro</span>
-  </button>
+  <svg class="icon-sprite" aria-hidden="true" focusable="false">
+    <symbol id="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M4.93 4.93l1.42 1.42M17.65 17.65l1.42 1.42M2 12h2M20 12h2M4.93 19.07l1.42-1.42M17.65 6.35l1.42-1.42"></path></symbol>
+    <symbol id="icon-moon" viewBox="0 0 24 24"><path d="M20.5 14.5A8.5 8.5 0 0 1 9.5 3.5 8.5 8.5 0 1 0 20.5 14.5Z"></path></symbol>
+    <symbol id="icon-home" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7v10a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10Z"></path><path d="M9 21v-7h6v7"></path></symbol>
+    <symbol id="icon-compass" viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="m15.5 8.5-2.1 4.9-4.9 2.1 2.1-4.9 4.9-2.1Z"></path></symbol>
+    <symbol id="icon-map-pin" viewBox="0 0 24 24"><path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z"></path><circle cx="12" cy="10" r="2.5"></circle></symbol>
+    <symbol id="icon-droplet" viewBox="0 0 24 24"><path d="M12 3s7 7.1 7 12a7 7 0 0 1-14 0c0-4.9 7-12 7-12Z"></path></symbol>
+    <symbol id="icon-waves" viewBox="0 0 24 24"><path d="M3 8c2.2 0 2.2-2 4.5-2S9.8 8 12 8s2.2-2 4.5-2S18.8 8 21 8M3 14c2.2 0 2.2-2 4.5-2s2.3 2 4.5 2 2.2-2 4.5-2 2.3 2 4.5 2M3 20c2.2 0 2.2-2 4.5-2s2.3 2 4.5 2 2.2-2 4.5-2 2.3 2 4.5 2"></path></symbol>
+    <symbol id="icon-fish" viewBox="0 0 24 24"><path d="M3 12c3-5 9-6 14-3l4-2-1 5 1 5-4-2c-5 3-11 2-14-3Z"></path><circle cx="8" cy="10" r="1"></circle></symbol>
+    <symbol id="icon-heart" viewBox="0 0 24 24"><path d="M20.8 8.6c0 5.5-8.8 10.5-8.8 10.5S3.2 14.1 3.2 8.6A4.6 4.6 0 0 1 12 6.1a4.6 4.6 0 0 1 8.8 2.5Z"></path></symbol>
+    <symbol id="icon-scale" viewBox="0 0 24 24"><path d="M12 3v18M5 7h14M6 7l-3 6a3 3 0 0 0 6 0L6 7ZM18 7l-3 6a3 3 0 0 0 6 0l-3-6ZM7 21h10"></path></symbol>
+    <symbol id="icon-book" viewBox="0 0 24 24"><path d="M4 5a2 2 0 0 1 2-2h5v17H6a2 2 0 0 0-2 2V5ZM20 5a2 2 0 0 0-2-2h-5v17h5a2 2 0 0 1 2 2V5Z"></path></symbol>
+    <symbol id="icon-sparkles" viewBox="0 0 24 24"><path d="m12 3 1.3 4.7L18 9l-4.7 1.3L12 15l-1.3-4.7L6 9l4.7-1.3L12 3ZM19 15l.7 2.3L22 18l-2.3.7L19 21l-.7-2.3L16 18l2.3-.7L19 15ZM5 14l.6 1.9L7.5 17l-1.9.6L5 19.5l-.6-1.9L2.5 17l1.9-.6L5 14Z"></path></symbol>
+    <symbol id="icon-menu" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16"></path></symbol>
+    <symbol id="icon-search" viewBox="0 0 24 24"><circle cx="10.8" cy="10.8" r="6.8"></circle><path d="m16 16 5 5"></path></symbol>
+    <symbol id="icon-sliders" viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16M8 4v4M16 10v4M10 16v4"></path></symbol>
+    <symbol id="icon-refresh" viewBox="0 0 24 24"><path d="M20 11a8 8 0 0 0-14.7-4L3 10M3 5v5h5M4 13a8 8 0 0 0 14.7 4L21 14m0 5v-5h-5"></path></symbol>
+    <symbol id="icon-shuffle" viewBox="0 0 24 24"><path d="M16 3h5v5M4 20 21 3M21 16v5h-5M4 4l5 5m4 6 3 3"></path></symbol>
+    <symbol id="icon-save" viewBox="0 0 24 24"><path d="M5 3h12l2 2v16H5V3Z"></path><path d="M8 3v6h8V3M8 21v-7h8v7"></path></symbol>
+    <symbol id="icon-x" viewBox="0 0 24 24"><path d="m5 5 14 14M19 5 5 19"></path></symbol>
+    <symbol id="icon-send" viewBox="0 0 24 24"><path d="m22 2-7 20-4-9-9-4 20-7Z"></path><path d="M22 2 11 13"></path></symbol>
+    <symbol id="icon-arrow-right" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"></path></symbol>
+  </svg>
 
   <div class="bubble-container" id="bubbleContainer" aria-hidden="true"></div>
 
   <header class="topbar">
     <div class="container topbar-content">
+      <button class="theme-toggle" id="themeToggle" type="button" aria-label="Ativar tema claro" title="Ativar tema claro">
+        <svg class="button-icon theme-toggle-icon" aria-hidden="true"><use href="#icon-sun"></use></svg>
+        <span class="theme-toggle-label">Claro</span>
+      </button>
       <div class="brand" data-nav-view="home">
         <div class="brand-icon" aria-label="Logo do FISHDEX"></div>
         <div class="brand-info">
@@ -35,23 +54,19 @@
       </div>
       <nav>
         <ul class="nav-links" id="navLinks">
-          <li><button class="nav-link active" data-nav-view="home">Início</button></li>
-          <li><button class="nav-link" data-nav-view="explorar">Explorar</button></li>
-          <li><button class="nav-link" data-nav-view="pesqueiro">Pesqueiros</button></li>
-          <li><button class="nav-link" data-nav-view="agua-doce">Água Doce</button></li>
-          <li><button class="nav-link" data-nav-view="agua-salgada">Água Salgada</button></li>
-          <li><button class="nav-link" data-nav-view="favoritos">Favoritos <span class="nav-badge" id="favCountBadge">0</span></button></li>
-          <li><button class="nav-link" data-nav-view="comparar">Comparar</button></li>
-          <li><button class="nav-link" data-nav-view="capturas">Diário de Pesca</button></li>
+          <li><button class="nav-link active" data-nav-view="home"><svg class="button-icon" aria-hidden="true"><use href="#icon-home"></use></svg>Início</button></li>
+          <li><button class="nav-link" data-nav-view="explorar"><svg class="button-icon" aria-hidden="true"><use href="#icon-compass"></use></svg>Explorar</button></li>
+          <li><button class="nav-link" data-nav-view="pesqueiro"><svg class="button-icon" aria-hidden="true"><use href="#icon-map-pin"></use></svg>Pesqueiros</button></li>
+          <li><button class="nav-link" data-nav-view="agua-doce"><svg class="button-icon" aria-hidden="true"><use href="#icon-droplet"></use></svg>Água Doce</button></li>
+          <li><button class="nav-link" data-nav-view="agua-salgada"><svg class="button-icon" aria-hidden="true"><use href="#icon-waves"></use></svg>Água Salgada</button></li>
+          <li><button class="nav-link" data-nav-view="favoritos"><svg class="button-icon" aria-hidden="true"><use href="#icon-heart"></use></svg>Favoritos <span class="nav-badge" id="favCountBadge">0</span></button></li>
+          <li><button class="nav-link" data-nav-view="comparar"><svg class="button-icon" aria-hidden="true"><use href="#icon-scale"></use></svg>Comparar</button></li>
+          <li><button class="nav-link" data-nav-view="capturas"><svg class="button-icon" aria-hidden="true"><use href="#icon-book"></use></svg>Diário de Pesca</button></li>
         </ul>
       </nav>
       <div class="topbar-actions">
-        <button class="btn-nav-surprise" id="navSurpriseBtn">Surpreenda-me</button>
-<<<<<<< HEAD
-        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menu">Menu</button>
-=======
-        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menu">☰</button>
->>>>>>> b6d7319da8c0d491673cc72ada8a3751ebfe0066
+        <button class="btn-nav-surprise" id="navSurpriseBtn"><svg class="button-icon" aria-hidden="true"><use href="#icon-sparkles"></use></svg>Surpreenda-me</button>
+        <button class="mobile-menu-btn" id="mobileMenuBtn" aria-label="Abrir menu"><svg class="button-icon" aria-hidden="true"><use href="#icon-menu"></use></svg></button>
       </div>
     </div>
   </header>
@@ -60,16 +75,12 @@
 
     <section class="hero-section" id="heroSection">
       <div class="container">
-<<<<<<< HEAD
-        <div class="hero-badge"><span>Enciclopédia</span><span>Enciclopédia Digital Interativa de Peixes</span></div>
-=======
         <div class="hero-badge"><span></span><span>Enciclopédia Digital Interativa de Peixes</span></div>
->>>>>>> b6d7319da8c0d491673cc72ada8a3751ebfe0066
         <h1 class="hero-title">Conheça o Mundo Subaquático com o <span>FISHDEx</span></h1>
         <p class="hero-subtitle">Sua enciclopédia interativa de peixes. Descubra biometrias, comportamentos, técnicas de pesca e compare dezenas de espécies de rios, pesqueiros e oceanos.</p>
         <div class="hero-actions">
-          <button class="btn-primary" id="heroCtaBtn">Explorar Peixes</button>
-          <button class="btn-secondary btn-surprise-me">Descobrir Peixe Aleatório</button>
+          <button class="btn-primary" id="heroCtaBtn"><svg class="button-icon" aria-hidden="true"><use href="#icon-compass"></use></svg>Explorar Peixes</button>
+          <button class="btn-secondary btn-surprise-me"><svg class="button-icon" aria-hidden="true"><use href="#icon-sparkles"></use></svg>Descobrir Peixe Aleatório</button>
         </div>
       </div>
     </section>
@@ -83,11 +94,7 @@
         <div class="habitat-grid">
           <div class="habitat-card card-pesqueiro glass" data-explore-habitat="pesqueiro">
             <div class="habitat-top">
-<<<<<<< HEAD
-              <div class="habitat-icon-large">Pesca</div>
-=======
               <div class="habitat-icon-large"></div>
->>>>>>> b6d7319da8c0d491673cc72ada8a3751ebfe0066
               <span class="habitat-count-badge" id="countPesqueiro">-- peixes</span>
             </div>
             <div class="habitat-info">
@@ -98,11 +105,7 @@
           </div>
           <div class="habitat-card card-agua-doce glass" data-explore-habitat="agua-doce">
             <div class="habitat-top">
-<<<<<<< HEAD
-              <div class="habitat-icon-large">Rio</div>
-=======
               <div class="habitat-icon-large"></div>
->>>>>>> b6d7319da8c0d491673cc72ada8a3751ebfe0066
               <span class="habitat-count-badge" id="countAguaDoce">-- peixes</span>
             </div>
             <div class="habitat-info">
@@ -113,11 +116,7 @@
           </div>
           <div class="habitat-card card-agua-salgada glass" data-explore-habitat="agua-salgada">
             <div class="habitat-top">
-<<<<<<< HEAD
-              <div class="habitat-icon-large">Mar</div>
-=======
               <div class="habitat-icon-large"></div>
->>>>>>> b6d7319da8c0d491673cc72ada8a3751ebfe0066
               <span class="habitat-count-badge" id="countAguaSalgada">-- peixes</span>
             </div>
             <div class="habitat-info">
@@ -145,16 +144,19 @@
         <div class="filter-toolbar glass">
           <div class="search-row">
             <div class="search-input-wrap">
-              <span class="search-icon-inside">Buscar</span>
-              <input type="search" id="searchInput" class="search-input" placeholder="Pesquisar por nome, espécie, região ou isca..." autocomplete="off" />
+              <label class="search-label" for="searchInput"><svg class="button-icon" aria-hidden="true"><use href="#icon-search"></use></svg>Buscar por espécie</label>
+              <div class="search-control">
+                <svg class="search-icon-inside" aria-hidden="true"><use href="#icon-search"></use></svg>
+                <input type="search" id="searchInput" class="search-input" placeholder="Nome, região ou isca..." autocomplete="off" aria-label="Buscar por espécie, nome, região ou isca" />
+              </div>
             </div>
           </div>
           <div class="habitat-pills">
-            <button class="pill-btn active" data-habitat-filter="todos">Todos</button>
-            <button class="pill-btn" data-habitat-filter="pesqueiro">Pesqueiro</button>
-            <button class="pill-btn" data-habitat-filter="agua-doce">Água Doce</button>
-            <button class="pill-btn" data-habitat-filter="agua-salgada">Água Salgada</button>
-            <button class="pill-btn" data-habitat-filter="favoritos">Favoritos</button>
+            <button class="pill-btn active" data-habitat-filter="todos"><svg class="button-icon" aria-hidden="true"><use href="#icon-fish"></use></svg>Todos</button>
+            <button class="pill-btn" data-habitat-filter="pesqueiro"><svg class="button-icon" aria-hidden="true"><use href="#icon-map-pin"></use></svg>Pesqueiro</button>
+            <button class="pill-btn" data-habitat-filter="agua-doce"><svg class="button-icon" aria-hidden="true"><use href="#icon-droplet"></use></svg>Água Doce</button>
+            <button class="pill-btn" data-habitat-filter="agua-salgada"><svg class="button-icon" aria-hidden="true"><use href="#icon-waves"></use></svg>Água Salgada</button>
+            <button class="pill-btn" data-habitat-filter="favoritos"><svg class="button-icon" aria-hidden="true"><use href="#icon-heart"></use></svg>Favoritos</button>
           </div>
           <div class="dropdown-filters-row">
             <div class="filter-group">
@@ -197,7 +199,7 @@
                 <option value="dificuldade-desc">Mais Difícil</option>
               </select>
             </div>
-            <button class="btn-reset-filters" id="resetAllFiltersBtn">Limpar Filtros</button>
+            <button class="btn-reset-filters" id="resetAllFiltersBtn"><svg class="button-icon" aria-hidden="true"><use href="#icon-refresh"></use></svg>Limpar Filtros</button>
           </div>
         </div>
         <div class="catalog-meta-bar">
@@ -221,8 +223,8 @@
               <select id="compareSelect1" class="compare-select"></select>
             </div>
             <div class="compare-tool-actions">
-              <button class="btn-compare-tool" id="compareSwapBtn">⇄ Inverter</button>
-              <button class="btn-compare-tool" id="compareRandomBtn">Sortear Duelo</button>
+              <button class="btn-compare-tool" id="compareSwapBtn"><svg class="button-icon" aria-hidden="true"><use href="#icon-shuffle"></use></svg>Inverter</button>
+              <button class="btn-compare-tool" id="compareRandomBtn"><svg class="button-icon" aria-hidden="true"><use href="#icon-sparkles"></use></svg>Sortear Duelo</button>
             </div>
             <div class="compare-select-wrap">
               <label for="compareSelect2">Peixe 2:</label>
@@ -243,11 +245,7 @@
         <div class="captures-layout">
           <form class="capture-form glass" id="captureForm">
             <div class="capture-form-heading">
-<<<<<<< HEAD
-              <span class="capture-form-icon">Pesca</span>
-=======
               <span class="capture-form-icon"></span>
->>>>>>> b6d7319da8c0d491673cc72ada8a3751ebfe0066
               <div>
                 <h3>Novo registro</h3>
                 <p>Os registros ficam salvos neste navegador.</p>
@@ -283,7 +281,7 @@
                 <input id="captureBait" name="bait" type="text" maxlength="120" placeholder="Ex.: Lambari vivo, massa ou isca artificial" required />
               </div>
             </div>
-            <button class="btn-primary" type="submit">Salvar registro</button>
+            <button class="btn-primary" type="submit"><svg class="button-icon" aria-hidden="true"><use href="#icon-save"></use></svg>Salvar registro</button>
           </form>
           <div class="capture-records-panel">
             <div class="capture-records-heading">
@@ -319,31 +317,32 @@
           <span>Pescador e parceiro de prosa</span>
         </div>
       </div>
-      <button class="assistant-close" id="fishingAssistantClose" type="button" aria-label="Fechar assistente">Fechar</button>
+      <button class="assistant-close" id="fishingAssistantClose" type="button" aria-label="Fechar assistente"><svg class="button-icon" aria-hidden="true"><use href="#icon-x"></use></svg><span>Fechar</span></button>
     </div>
     <div class="assistant-messages" id="assistantMessages" aria-live="polite">
       <div class="assistant-message assistant-message-bot">Meu nome é Zé, estou à disposição.</div>
     </div>
-    <div class="assistant-suggestions" aria-label="Sugestões de perguntas">
-      <button type="button" data-assistant-question="Qual isca usar para o dourado?">Isca para o dourado</button>
-      <button type="button" data-assistant-question="Como funciona a boia cevadeira?">Boia cevadeira</button>
-      <button type="button" data-assistant-question="Como usar o palminho?">Palminho</button>
-      <button type="button" data-assistant-question="Onde encontro peixes de água doce?">Água doce</button>
-      <button type="button" data-assistant-question="Como registrar uma pescaria?">Diário de pesca</button>
+    <div class="assistant-recommendations">
+      <span class="assistant-recommendations-label"><svg class="button-icon" aria-hidden="true"><use href="#icon-sparkles"></use></svg>Recomendações</span>
+      <div class="assistant-suggestions" aria-label="Recomendações de perguntas">
+        <button type="button" data-assistant-question="Qual isca usar para a tilápia?"><svg class="button-icon" aria-hidden="true"><use href="#icon-fish"></use></svg>Isca para tilápia</button>
+        <button type="button" data-assistant-question="Qual isca usar para o dourado?"><svg class="button-icon" aria-hidden="true"><use href="#icon-fish"></use></svg>Isca para dourado</button>
+        <button type="button" data-assistant-question="Qual sistema usar para pescar o pintado?"><svg class="button-icon" aria-hidden="true"><use href="#icon-scale"></use></svg>Sistema do pintado</button>
+        <button type="button" data-assistant-question="Como funciona a boia cevadeira?"><svg class="button-icon" aria-hidden="true"><use href="#icon-droplet"></use></svg>Boia cevadeira</button>
+        <button type="button" data-assistant-question="Onde encontro peixes de água doce?"><svg class="button-icon" aria-hidden="true"><use href="#icon-waves"></use></svg>Habitat de água doce</button>
+        <button type="button" data-assistant-question="Quais cuidados devo ter antes de pescar?"><svg class="button-icon" aria-hidden="true"><use href="#icon-book"></use></svg>Cuidados e regras</button>
+        <button type="button" data-assistant-question="Como registrar uma pescaria?"><svg class="button-icon" aria-hidden="true"><use href="#icon-book"></use></svg>Diário de pesca</button>
+      </div>
     </div>
     <form class="assistant-form" id="assistantForm">
       <input id="assistantInput" type="text" maxlength="240" autocomplete="off" placeholder="Pergunte sobre pesca..." aria-label="Digite sua pergunta" required />
-      <button type="submit" aria-label="Enviar pergunta" title="Enviar pergunta">Enviar</button>
+      <button type="submit" aria-label="Enviar pergunta" title="Enviar pergunta"><svg class="button-icon" aria-hidden="true"><use href="#icon-send"></use></svg></button>
     </form>
   </aside>
 
   <footer class="app-footer">
     <div class="container footer-content">
-<<<<<<< HEAD
-      <div class="footer-brand"><span>FISHDEx</span></div>
-=======
       <div class="footer-brand"><span></span><span>FISHDEx</span></div>
->>>>>>> b6d7319da8c0d491673cc72ada8a3751ebfe0066
       <p class="footer-text">Enciclopédia digital voltada para a pesca esportiva, preservação dos rios e conhecimento da ictiofauna brasileira.</p>
       <p class="footer-copy">FISHDEx © 2026 • HTML, CSS &amp; JavaScript • Explore. Conheça. Pesque.</p>
     </div>
