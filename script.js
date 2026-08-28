@@ -1370,7 +1370,7 @@ const ThemeManager = {
     const button = document.getElementById("themeToggle");
     if (button) {
       const isLight = nextTheme === "light";
-      button.querySelector(".theme-toggle-icon").textContent = isLight ? "🌙" : "☀️";
+      button.querySelector(".theme-toggle-icon").textContent = "Tema";
       button.querySelector(".theme-toggle-label").textContent = isLight ? "Escuro" : "Claro";
       button.setAttribute("aria-label", isLight ? "Ativar tema escuro" : "Ativar tema claro");
       button.title = isLight ? "Ativar tema escuro" : "Ativar tema claro";
@@ -1471,10 +1471,10 @@ const ComparadorManager = {
     if (!p1 || !p2) return "";
 
     const statLabels = [
-      { key: "forca",      label: "💪 Força",      fill: "fill-strength" },
-      { key: "velocidade", label: "⚡ Velocidade",  fill: "fill-speed" },
-      { key: "tamanho",    label: "📏 Porte",       fill: "fill-size" },
-      { key: "dificuldade",label: "🎯 Dificuldade", fill: "fill-diff" }
+      { key: "forca",      label: "Força",      fill: "fill-strength" },
+      { key: "velocidade", label: "Velocidade",  fill: "fill-speed" },
+      { key: "tamanho",    label: "Porte",       fill: "fill-size" },
+      { key: "dificuldade",label: "Dificuldade", fill: "fill-diff" }
     ];
 
     const statsHtml = statLabels.map(s => {
@@ -1508,7 +1508,7 @@ const ComparadorManager = {
         ${App.renderCompareSide(p2, "p2")}
       </div>
       <div class="compare-detailed-section glass">
-        <h3>📊 Comparativo de Atributos</h3>
+        <h3>Comparativo de Atributos</h3>
         <div class="compare-bars-list">${statsHtml}</div>
         <br/>
         <div class="compare-bars-list">
@@ -1575,11 +1575,11 @@ const App = {
 
     box.innerHTML = `
       <div class="fotd-container glass">
-        <div class="fotd-badge">⭐ Peixe do Dia</div>
+        <div class="fotd-badge">Peixe do Dia</div>
         <div class="fotd-content">
           <div class="fotd-image-box">
             <img class="fotd-image" src="${peixe.foto}" alt="${peixe.nome}"
-              onerror="this.src='https://via.placeholder.com/340x240/0b1a2f/00e5ff?text=🐟+${encodeURIComponent(peixe.nome)}'" />
+              onerror="this.src='https://via.placeholder.com/340x240/0b1a2f/00e5ff?text=${encodeURIComponent(peixe.nome)}'" />
             <div class="fotd-tags">${this._renderBadges(peixe)}</div>
           </div>
           <div class="fotd-info">
@@ -1589,15 +1589,15 @@ const App = {
                 <div class="fotd-scientific">${peixe.nomeCientifico}</div>
               </div>
             </div>
-            <div class="fotd-curiosity">💡 ${peixe.curiosidades[0]}</div>
+            <div class="fotd-curiosity">${peixe.curiosidades[0]}</div>
             <div class="fotd-metrics">
               <div class="metric"><span class="m-label">Porte</span><span class="m-val">${peixe.tamanhoMedio}</span></div>
               <div class="metric"><span class="m-label">Peso Médio</span><span class="m-val">${peixe.pesoMedio}</span></div>
               <div class="metric"><span class="m-label">Dificuldade</span><span class="m-val ${this._diffClass(peixe.dificuldade)}">${peixe.dificuldade}</span></div>
             </div>
             <div class="fotd-actions">
-              <button class="btn-primary" onclick="App.openModal('${peixe.id}')">🔍 Ver Ficha Completa</button>
-              <button class="btn-secondary" onclick="App._navigate('explorar')">🐟 Ver Catálogo</button>
+              <button class="btn-primary" onclick="App.openModal('${peixe.id}')">Ver Ficha Completa</button>
+              <button class="btn-secondary" onclick="App._navigate('explorar')">Ver Catálogo</button>
             </div>
           </div>
         </div>
@@ -1618,7 +1618,7 @@ const App = {
       grid.innerHTML = "";
       if (empty) {
         empty.classList.remove("hidden");
-        empty.innerHTML = `<div class="empty-content"><span class="empty-icon">🔍</span><h3>Nenhum peixe encontrado</h3><p>Tente outros filtros ou limpe a pesquisa.</p><button class="btn-primary" id="emptyResetBtn">Limpar Filtros</button></div>`;
+        empty.innerHTML = `<div class="empty-content"><span class="empty-icon">Busca</span><h3>Nenhum peixe encontrado</h3><p>Tente outros filtros ou limpe a pesquisa.</p><button class="btn-primary" id="emptyResetBtn">Limpar Filtros</button></div>`;
         document.getElementById("emptyResetBtn")?.addEventListener("click", () => this._resetFilters());
       }
       return;
@@ -1631,29 +1631,29 @@ const App = {
         <div class="fish-card-header">
           <div class="fish-image-wrap">
             <img class="fish-card-image" src="${p.foto}" alt="${p.nome}"
-              onerror="this.src='https://via.placeholder.com/400x190/0b1a2f/00e5ff?text=🐟+${encodeURIComponent(p.nome)}'" loading="lazy" />
+              onerror="this.src='https://via.placeholder.com/400x190/0b1a2f/00e5ff?text=${encodeURIComponent(p.nome)}'" loading="lazy" />
           </div>
           <button class="card-fav-btn ${FavoritosManager.isFav(p.id) ? "active" : ""}"
-            onclick="event.stopPropagation();App.toggleFav('${p.id}',this)" title="Favoritar">${FavoritosManager.isFav(p.id) ? "❤️" : "🤍"}</button>
+            onclick="event.stopPropagation();App.toggleFav('${p.id}',this)" title="Favoritar">${FavoritosManager.isFav(p.id) ? "Favoritado" : "Favoritar"}</button>
           <span class="card-difficulty-badge ${this._diffClass(p.dificuldade)}">${p.dificuldade}</span>
         </div>
         <div class="fish-card-body">
           <div class="category-pills">${this._renderBadges(p)}</div>
           <h3 class="fish-title">${p.nome}</h3>
           <p class="fish-scientific">${p.nomeCientifico}</p>
-          <p class="fish-habitat">📍 ${p.habitat}</p>
+          <p class="fish-habitat">${p.habitat}</p>
           <div class="fish-quick-stats">
             <div class="quick-stat"><span class="qs-label">PORTE</span><span class="qs-val">${p.tamanhoMedio}</span></div>
             <div class="quick-stat"><span class="qs-label">PESO MÉDIO</span><span class="qs-val">${p.pesoMedio}</span></div>
           </div>
           <div class="card-stat-bars">
-            <div class="mini-bar-row"><span class="mb-label">💪 Força</span><div class="mb-track"><div class="mb-fill fill-strength" style="width:${p.status.forca}%"></div></div></div>
-            <div class="mini-bar-row"><span class="mb-label">⚡ Vel.</span><div class="mb-track"><div class="mb-fill fill-speed" style="width:${p.status.velocidade}%"></div></div></div>
+            <div class="mini-bar-row"><span class="mb-label">Força</span><div class="mb-track"><div class="mb-fill fill-strength" style="width:${p.status.forca}%"></div></div></div>
+            <div class="mini-bar-row"><span class="mb-label">Vel.</span><div class="mb-track"><div class="mb-fill fill-speed" style="width:${p.status.velocidade}%"></div></div></div>
           </div>
         </div>
         <div class="fish-card-footer">
           <button class="btn-card-details" onclick="event.stopPropagation();App.openModal('${p.id}')">Ver detalhes <span class="arrow">→</span></button>
-          <button class="btn-card-compare" onclick="event.stopPropagation();App.addToCompare('${p.id}')" title="Comparar">⚖️</button>
+          <button class="btn-card-compare" onclick="event.stopPropagation();App.addToCompare('${p.id}')" title="Comparar">Comparar</button>
         </div>
       </div>`).join("");
   },
@@ -1672,28 +1672,28 @@ const App = {
         <div class="modal-top-bar">
           <div class="modal-badge-group">
             ${this._renderBadges(p)}
-            <span class="badge badge-diff ${this._diffClass(p.dificuldade)}">🎯 ${p.dificuldade}</span>
+            <span class="badge badge-diff ${this._diffClass(p.dificuldade)}">${p.dificuldade}</span>
           </div>
-          <button class="modal-close" onclick="App.closeModal()">✕</button>
+          <button class="modal-close" onclick="App.closeModal()">Fechar</button>
         </div>
         <div class="modal-hero-split">
           <div class="modal-image-column">
             <div class="modal-img-frame">
               <img class="modal-fish-img" src="${p.foto}" alt="${p.nome}"
-                onerror="this.src='https://via.placeholder.com/380x280/0b1a2f/00e5ff?text=🐟+${encodeURIComponent(p.nome)}'" />
+                onerror="this.src='https://via.placeholder.com/380x280/0b1a2f/00e5ff?text=${encodeURIComponent(p.nome)}'" />
             </div>
             <div class="modal-action-buttons">
               <button class="btn-fav-toggle ${isFav ? "is-favorited" : ""}" id="modalFavBtn" onclick="App.toggleFavModal('${p.id}')">
-                ${isFav ? "❤️ Favoritado" : "🤍 Favoritar"}
+                ${isFav ? "Favoritado" : "Favoritar"}
               </button>
-              <button class="btn-compare-action" onclick="App.addToCompare('${p.id}');App.closeModal()">⚖️ Comparar</button>
+              <button class="btn-compare-action" onclick="App.addToCompare('${p.id}');App.closeModal()">Comparar</button>
             </div>
           </div>
           <div class="modal-info-column">
             <h2 class="modal-fish-name">${p.nome}</h2>
             <p class="modal-fish-scientific">${p.nomeCientifico}</p>
             <div class="modal-biometry-grid">
-              <div class="bio-item"><span class="bio-label">Habitat</span><span class="bio-val">📍 ${p.habitat}</span></div>
+              <div class="bio-item"><span class="bio-label">Habitat</span><span class="bio-val">${p.habitat}</span></div>
               <div class="bio-item"><span class="bio-label">Região</span><span class="bio-val">${p.regiao}</span></div>
               <div class="bio-item"><span class="bio-label">Tamanho Médio</span><span class="bio-val">${p.tamanhoMedio}</span></div>
               <div class="bio-item"><span class="bio-label">Tamanho Máximo</span><span class="bio-val">${p.tamanhoMaximo}</span></div>
@@ -1705,10 +1705,10 @@ const App = {
               <p class="section-title">Atributos de Pesca</p>
               <div class="stat-meters-list">
                 ${[
-                  { key:"forca",       label:"💪 Força",      fill:"fill-strength"},
-                  { key:"velocidade",  label:"⚡ Velocidade",  fill:"fill-speed"},
-                  { key:"tamanho",     label:"📏 Porte",       fill:"fill-size"},
-                  { key:"dificuldade", label:"🎯 Dificuldade", fill:"fill-diff"}
+                  { key:"forca",       label:"Força",      fill:"fill-strength"},
+                  { key:"velocidade",  label:"Velocidade",  fill:"fill-speed"},
+                  { key:"tamanho",     label:"Porte",       fill:"fill-size"},
+                  { key:"dificuldade", label:"Dificuldade", fill:"fill-diff"}
                 ].map(s => `
                   <div class="stat-meter-row">
                     <div class="stat-meta"><span class="sm-label">${s.label}</span><span class="sm-value">${p.status[s.key]}/100</span></div>
@@ -1720,27 +1720,27 @@ const App = {
         </div>
         <div class="modal-extra-tabs">
           <div class="modal-guide-box">
-            <div class="guide-title">🎣 Como Pescar</div>
+            <div class="guide-title">Como Pescar</div>
             <div class="guide-grid">
               <div class="guide-col">
-                <h5>🌿 Iscas Naturais</h5>
+                <h5>Iscas Naturais</h5>
                 <ul class="guide-tags">${(p.iscas?.naturais||[]).map(i=>`<li>${i}</li>`).join("")}</ul>
               </div>
               <div class="guide-col">
-                <h5>⚡ Iscas Artificiais</h5>
+                <h5>Iscas Artificiais</h5>
                 <ul class="guide-tags">${(p.iscas?.artificiais||[]).map(i=>`<li>${i}</li>`).join("")}</ul>
               </div>
             </div>
             <div class="guide-details-rows">
-              <div><strong>📅 Melhor Época:</strong> ${p.melhorEpoca}</div>
-              <div><strong>🎯 Técnica:</strong> ${p.tecnicasPesca}</div>
+              <div><strong>Melhor Época:</strong> ${p.melhorEpoca}</div>
+              <div><strong>Técnica:</strong> ${p.tecnicasPesca}</div>
             </div>
           </div>
           <div class="modal-trivia-box">
-            <div class="trivia-title">💡 Você Sabia?</div>
+            <div class="trivia-title">Você Sabia?</div>
             <div class="trivia-list">
-              ${(p.curiosidades||[]).map(c=>`<div class="trivia-item"><span class="check-icon">✦</span><span>${c}</span></div>`).join("")}
-              ${p.descricao ? `<div class="trivia-item"><span class="check-icon">✦</span><span>${p.descricao}</span></div>` : ""}
+              ${(p.curiosidades||[]).map(c=>`<div class="trivia-item"><span class="check-icon"></span><span>${c}</span></div>`).join("")}
+              ${p.descricao ? `<div class="trivia-item"><span class="check-icon"></span><span>${p.descricao}</span></div>` : ""}
             </div>
           </div>
         </div>
@@ -1759,29 +1759,29 @@ const App = {
   toggleFav(id, btn) {
     const added = FavoritosManager.toggle(id);
     if (btn) {
-      btn.textContent = added ? "❤️" : "🤍";
+      btn.textContent = added ? "Favoritado" : "Favoritar";
       btn.classList.toggle("active", added);
     }
     this._updateFavBadge();
     const habFilt = FiltrosManager.getState().habitat;
     if (habFilt === "favoritos") this._renderCatalog();
-    this._showToast(added ? `❤️ ${PeixesDB.getById(id)?.nome} adicionado aos favoritos!` : `💔 Removido dos favoritos.`);
+    this._showToast(added ? `${PeixesDB.getById(id)?.nome} adicionado aos favoritos!` : `Removido dos favoritos.`);
   },
 
   toggleFavModal(id) {
     const added = FavoritosManager.toggle(id);
     const btn = document.getElementById("modalFavBtn");
     if (btn) {
-      btn.textContent = added ? "❤️ Favoritado" : "🤍 Favoritar";
+      btn.textContent = added ? "Favoritado" : "Favoritar";
       btn.classList.toggle("is-favorited", added);
     }
     this._updateFavBadge();
-    this._showToast(added ? `❤️ ${PeixesDB.getById(id)?.nome} favoritado!` : `💔 Removido dos favoritos.`);
+    this._showToast(added ? `${PeixesDB.getById(id)?.nome} favoritado!` : `Removido dos favoritos.`);
     const cards = document.querySelectorAll(`.card-fav-btn`);
     cards.forEach(c => {
       const cardId = c.closest(".fish-card")?.querySelector(".btn-card-details")?.getAttribute("onclick")?.match(/'([^']+)'/)?.[1];
       if (cardId === id) {
-        c.textContent = added ? "❤️" : "🤍";
+        c.textContent = added ? "Favoritado" : "Favoritar";
         c.classList.toggle("active", added);
       }
     });
@@ -1801,7 +1801,7 @@ const App = {
     else { sel2.value = id; }
     this._navigate("comparar");
     this._renderCompare();
-    this._showToast(`⚖️ ${PeixesDB.getById(id)?.nome} adicionado ao comparador!`);
+    this._showToast(`${PeixesDB.getById(id)?.nome} adicionado ao comparador!`);
   },
 
   _populateCompareSelects() {
@@ -1829,8 +1829,8 @@ const App = {
         <div class="compare-fish-header">
           <div class="compare-img-wrap">
             <img src="${p.foto}" alt="${p.nome}"
-              onerror="this.src='https://via.placeholder.com/280x180/0b1a2f/00e5ff?text=🐟+${encodeURIComponent(p.nome)}'" />
-            <span class="compare-tag">${side === "p1" ? "🔵 Peixe 1" : "🟠 Peixe 2"}</span>
+              onerror="this.src='https://via.placeholder.com/280x180/0b1a2f/00e5ff?text=${encodeURIComponent(p.nome)}'" />
+            <span class="compare-tag">${side === "p1" ? "Peixe 1" : "Peixe 2"}</span>
           </div>
           <h3>${p.nome}</h3>
           <p class="scientific-name">${p.nomeCientifico}</p>
@@ -1849,7 +1849,7 @@ const App = {
   _surpriseMe() {
     const p = PEIXES_DATA[Math.floor(Math.random() * PEIXES_DATA.length)];
     this.openModal(p.id);
-    this._showToast(`🎲 Descobriu: ${p.nome}!`);
+    this._showToast(`Descobriu: ${p.nome}!`);
   },
 
   // --- Navegação de Views ---
@@ -1895,9 +1895,9 @@ const App = {
         FiltrosManager.setState("habitat", view);
         this._syncPills(view);
         const titleMap = {
-          "pesqueiro":   ["🎣 Peixes de Pesqueiro", "Espécies consagradas nos pesqueiros esportivos brasileiros."],
-          "agua-doce":   ["💧 Peixes de Água Doce",  "Espécies selvagens de rios, represas e lagos de água doce."],
-          "agua-salgada":["🌊 Peixes de Água Salgada","Espécies marinhas e estuarinas do litoral brasileiro."]
+          "pesqueiro":   ["Peixes de Pesqueiro", "Espécies consagradas nos pesqueiros esportivos brasileiros."],
+          "agua-doce":   ["Peixes de Água Doce",  "Espécies selvagens de rios, represas e lagos de água doce."],
+          "agua-salgada":["Peixes de Água Salgada","Espécies marinhas e estuarinas do litoral brasileiro."]
         };
         document.getElementById("catalogTitle").textContent    = titleMap[view][0];
         document.getElementById("catalogSubtitle").textContent = titleMap[view][1];
@@ -1908,7 +1908,7 @@ const App = {
         exploreSection?.classList.remove("hidden");
         FiltrosManager.setState("habitat", "favoritos");
         this._syncPills("favoritos");
-        document.getElementById("catalogTitle").textContent    = "⭐ Meus Favoritos";
+        document.getElementById("catalogTitle").textContent    = "Meus Favoritos";
         document.getElementById("catalogSubtitle").textContent = "Suas espécies favoritas salvas localmente no navegador.";
         this._renderCatalog();
         document.querySelector('[data-nav-view="favoritos"]')?.classList.add("active");
@@ -1990,11 +1990,11 @@ const App = {
               <button class="capture-confirm-btn" type="button" onclick="App.confirmDeleteCapture('${this._escapeHtml(captura.id)}')">Confirmar</button>
               <button class="capture-cancel-btn" type="button" onclick="App.cancelDeleteCapture()">Cancelar</button>
             </div>` : `
-            <button class="capture-delete" type="button" onclick="App.requestDeleteCapture('${this._escapeHtml(captura.id)}')" aria-label="Excluir registro" title="Excluir registro">✕</button>`}
+            <button class="capture-delete" type="button" onclick="App.requestDeleteCapture('${this._escapeHtml(captura.id)}')" aria-label="Excluir registro" title="Excluir registro">Excluir</button>`}
           <div class="capture-record-top">
             <div>
               <h4>${this._escapeHtml(nomePeixe)}</h4>
-              <span class="capture-record-person">🎣 ${this._escapeHtml(captura.person)}</span>
+              <span class="capture-record-person">${this._escapeHtml(captura.person)}</span>
             </div>
             <span class="capture-record-date">${this._escapeHtml(data)}</span>
           </div>
@@ -2016,13 +2016,13 @@ const App = {
     if (!fish) return;
     const weight = String(data.get("weight") || "").replace(",", ".");
     if (!/^\d+(\.\d+)?$/.test(weight) || Number(weight) <= 0) {
-      this._showToast("⚠️ Informe um peso válido usando apenas números.");
+      this._showToast("Informe um peso válido usando apenas números.");
       document.getElementById("captureWeight")?.focus();
       return;
     }
     const length = String(data.get("length") || "").replace(",", ".");
     if (!/^\d+(\.\d+)?$/.test(length) || Number(length) <= 0) {
-      this._showToast("⚠️ Informe um tamanho válido usando apenas números.");
+      this._showToast("Informe um tamanho válido usando apenas números.");
       document.getElementById("captureLength")?.focus();
       return;
     }
@@ -2039,7 +2039,7 @@ const App = {
     form.reset();
     document.getElementById("captureDate").value = new Date().toISOString().slice(0, 10);
     this._renderCaptures();
-    this._showToast(`📋 Registro de ${fish.nome} salvo!`);
+    this._showToast(`Registro de ${fish.nome} salvo!`);
   },
 
   requestDeleteCapture(id) {
@@ -2056,16 +2056,16 @@ const App = {
     CapturasManager.remove(id);
     this._pendingCaptureDelete = null;
     this._renderCaptures();
-    this._showToast("🗑️ Registro removido.");
+    this._showToast("Registro removido.");
   },
 
   // --- Utilitários de UI ---
   _renderBadges(p) {
     const cats = [p.categoria, ...(p.categoriasAdicionais || [])];
     const map = {
-      "pesqueiro":    ["badge-pesqueiro",    "🎣 Pesqueiro"],
-      "agua-doce":    ["badge-agua-doce",    "💧 Água Doce"],
-      "agua-salgada": ["badge-agua-salgada", "🌊 Água Salgada"]
+      "pesqueiro":    ["badge-pesqueiro",    "Pesqueiro"],
+      "agua-doce":    ["badge-agua-doce",    "Água Doce"],
+      "agua-salgada": ["badge-agua-salgada", "Água Salgada"]
     };
     return [...new Set(cats)].map(c => map[c] ? `<span class="badge ${map[c][0]}">${map[c][1]}</span>` : "").join("");
   },
@@ -2477,7 +2477,7 @@ const App = {
       if (s1) s1.value = ids[i1];
       if (s2) s2.value = ids[i2];
       this._renderCompare();
-      this._showToast("🎲 Duelo aleatório sorteado!");
+      this._showToast("Duelo aleatório sorteado!");
     });
   }
 };
